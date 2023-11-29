@@ -1,0 +1,362 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: monospace;
+}
+*::selection{
+    background-color: white;
+    color: red;
+}
+html,body{
+    height: 100%;
+    width: 100%;
+
+}
+
+body::-webkit-scrollbar{
+    display: block;
+    width: 8px;
+    background-color: black;
+}
+body::-webkit-scrollbar-thumb{
+    background: linear-gradient(to bottom,black,red,black);
+    border-radius: 50px;
+}
+
+#nav{
+    height: 140px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    color: white;
+    /* color: red; */
+
+    gap: 40px;
+    position: fixed;
+    z-index: 99;
+}
+
+#cursor{
+    background-color: red;
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    position: fixed;
+    z-index: 99;
+}
+
+#blur{
+    background-color: red;
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    position: fixed;
+    filter: blur(90px);
+    z-index: 9;
+}
+
+/* #nav h4{
+    text-transform: uppercase;
+    font-weight: bolder;
+    font-size: large;
+} */
+
+#nav a{
+    text-transform: uppercase;
+    font-size: 16px;
+    font-weight: bolder;
+    text-decoration: none;
+    color: white;
+}
+
+
+#nav img{
+    height: 100px;
+    width: 100px;
+
+}
+video{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    position: fixed;
+    z-index: -1;
+}
+
+#main{
+    position: relative;
+    background-color: rgba(0, 0, 0, 0.397);
+}
+
+#page1{
+    color: antiquewhite;
+    height: 100vh;
+    width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    z-index: 10;
+}
+
+#page1 h1{
+    font-size: 140px;
+    font-weight: 900;
+    position: relative;
+}
+#page1 h1::before{
+    content: "पधारो म्हारे देश";
+    position: absolute;
+    color: black;
+    top: -2px;
+    left: -2px;
+    -webkit-text-stroke: 3px orangered;
+    z-index: -1;
+}
+
+#page1 h4{
+    font-size: 70px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+#page1 p{
+    width: 50%;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+#page2{
+    min-height: 100vh;
+    width: 100%;
+    z-index: 10;
+}
+
+#scroller{
+    /* background-color: red; */
+    white-space: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    position: relative;
+    z-index: 10;
+}
+
+/* We have used this function to hide the scrollbar being displayed */
+#scroller::-webkit-scrollbar{
+    display: none;
+}
+
+#scroller1{
+    display: inline-block;
+    white-space: nowrap;
+    animation-name: scroll;
+    animation-duration: 20s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+#scroller h4{
+    display: inline-block;
+    font-size: 140px;
+    font-weight: 900;
+    margin-right: 40px;
+    -webkit-text-stroke: 2px red;
+    color: transparent;   
+    transition: all linear 0.5s;/* transition is the way to control the animation when changing the CSS property */
+}
+
+#scroller h4:hover{
+    color: red;
+}
+
+#about-us{
+    position: relative;
+    height: 40vh;
+    width: 100%;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 0 50px;
+    z-index: 10;
+}
+
+#about-us-in{
+    width: 50%;
+    text-align: center;
+
+}
+#about-us-in h3{
+    font-size: 70px;
+    margin-bottom: 20px;
+}
+
+#about-us-in p{
+    font-size: 18px;
+}
+
+#about-us img{
+    height: 150px;
+    width: 250px;
+    border-radius: 30px;
+    object-fit: cover;
+}
+
+#card-container{
+    /* background-color: rgba(255, 0, 0, 0.396); */
+    height: 50vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 70px;
+    align-items: center;
+    position: relative;
+    z-index: 10;
+}
+
+.cards{
+    height: 80%;
+    width: 20%;
+    /* background-color: blue; */
+    border-radius: 30px;
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+}
+
+#card1{
+    background-image: url("./images/history-rajasthan.jpg");
+}
+
+#card2{
+    background-image: url("./images/wood-work-rajasthan.jpg");
+}
+
+#card3{
+    background-image: url("./images/stone-carving-rajasthan.jpg");
+}
+
+.overlay{
+    height: 100%;
+    width: 100%;
+    background-color: red;
+    padding: 20px;
+    opacity: 0;
+    transition: all linear 0.6s;
+}
+
+.overlay:hover{
+    opacity: 100%;
+}
+
+.overlay h4{
+    white-space: nowrap; /* koi bhi element agli line mai aa rha hai to usse same line mai laane ka kaam krta hai  */
+    font-size: 35px;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.overlay p{
+    font-family: sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.cards:hover{
+    transform: rotate3d(1,1,0,20deg);
+}
+
+#greencontainer{
+    font-size: 25px;
+    height: 30vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    position: relative;
+    z-index: 10;
+
+    /* Way to give the bg in gradient color */
+    /* background: linear-gradient(red, orange); */
+    /* background: linear-gradient(to left,red, orange); */
+    background: linear-gradient(to left bottom,red, blue);
+
+}
+
+#page3{
+    height: 100vh;
+    width: 100%;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+#page3>p{
+    height: 20%;
+    width: 50%;
+    font-size: 40px;
+    color: antiquewhite;
+    line-height: 50px; /* This will give the gap between the lines*/
+    text-align: center;
+    z-index: 10;
+}
+
+#page3 img{
+    position: absolute;
+    z-index: 10;
+}
+#dic1{
+    height: 60px;
+    top: 25%;
+    left: 20%;
+}
+
+#dic2{
+    height: 95px;
+    bottom: 20%;
+    right: 20%;
+}
+
+#footer{
+    height: 20vh;
+    width: 100%;
+    background: linear-gradient(to left,rgb(58, 58, 58),black,rgb(58, 58, 58) );
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#footer1{
+    margin-left: -35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 100px;
+    z-index: 10;
+}
+
+#footer2{
+    color: antiquewhite;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 125px;
+    z-index: 10;
+}
+
+@keyframes scroll {
+    from{
+        transform: translateX(0%);
+    }
+    to{
+        transform: translateX(-100%);
+    }
+}
